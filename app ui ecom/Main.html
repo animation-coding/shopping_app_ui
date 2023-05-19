@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        *,
+        *:after,
+        *:before {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url(assets/img/main.png) no-repeat center;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+
+        }
+
+        .the-frame {
+            display: block;
+            position: relative;
+        }
+
+        .phone {
+            box-shadow: 15px 21px 40px rgb(0 0 0 / 29%);
+            display: flex;
+            border-radius: 36px;
+            background: #fff6f6;
+            position: relative;
+            border: 4px solid #060606;
+            overflow: hidden;
+        }
+
+
+
+        .phone_3df {
+            border-radius: 30px;
+            border: none;
+            overflow: hidden;
+            height: 750px;
+            width: 362px;
+        }
+
+        .header {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 18px;
+            max-width: 100%;
+            margin: 1px auto;
+            left: 0;
+            right: 0;
+        }
+
+        .time {
+            position: relative;
+            width: 50%;
+        }
+
+        .time span {
+            color: #060606;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        #minutes {
+            margin-left: -4px;
+        }
+
+        .camra {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            border-radius: 50px;
+            background: #060606;
+        }
+
+        .aset {
+            display: flex;
+            gap: 10px;
+            width: 50%;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="the-frame">
+        <div class="phone">
+            <div class="header">
+                <div class="time">
+                    <span id="hours"></span>:
+                    <span id="minutes"></span>
+                </div>
+                <div class="camra"></div>
+                <div class="aset">
+                    <img src="assets/img/Status Bar/Mobile Signal.png" alt="">
+                    <img src="assets/img/Status Bar/Wifi.png" alt="">
+                    <img src="assets/img/Status Bar/Battery.png" alt="">
+                </div>
+            </div>
+            <iframe src="signin.html" class="phone_3df">
+
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        // get the current time
+        let currentTime = new Date();
+
+        // get the hours and minutes
+        let hours = currentTime.getHours();
+        let minutes = currentTime.getMinutes();
+
+        // convert to 12-hour format
+        hours = hours % 12;
+        hours = hours ? hours : 12; // if hours is 0, set it to 12
+
+        // update the HTML elements with the new time
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = ("0" + minutes).slice(-2);
+
+    </script>
+</body>
+
+</html>
